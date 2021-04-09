@@ -8,6 +8,7 @@ class Customer(models.Model):
     phone=models.CharField(max_length=100,null=True)
     email=models.CharField(max_length=100,null=True)
     profile_pic=models.ImageField(default='profile1.png',null=True,blank=True)
+    resume=models.FileField(upload_to='static/docs1/',null=True,blank=True)
     date_created=models.DateTimeField(auto_now_add=True)
 
 

@@ -16,6 +16,7 @@ from .filters import OrderFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
 from django.contrib.auth.models import Group
+import csv
 
 @unauthenticated_user
 def register(request):
@@ -161,3 +162,15 @@ def deleteOrder(request, pk):
 		return redirect('/')
 	context = {'item':order}
 	return render(request, 'accounts/delete.html', context)
+
+
+def export_csv(request):
+    responce=HttpResponse(content_type='text/csv')
+    responce['Content-Disposition']='attachment ; filename=Export_Product_details.csv'
+    writer=csv.writer(responce)
+    writer.writerow(['Product','Note','Date','Status'])
+    orders=request.user.customer.order_set.all()
+    for order in orders:
+        writer.writerow([order.product,order.note,order.date_created,order.status])
+    return responce
+

@@ -22,7 +22,7 @@ from . import views
 
 urlpatterns = [
     path('',views.home,name='home'),
-path('user/', views.userPage, name="user-page"),
+    path('user/', views.userPage, name="user-page"),
     path('Customer/<str:pk_test>/', views.customer,name='customer'),
     path('Product/',views.product,name='product'),
     path('create_order/<str:pk>/',views.createOrder,name='create_order'),
@@ -32,6 +32,7 @@ path('user/', views.userPage, name="user-page"),
     path('register/',views.register,name='register'),
     path('logout/', views.logoutUser, name='logout'),
     path('account/', views.accountSettings, name="account"),
+    path('export_csv/',views.export_csv,name='export-csv'),
 
     path('reset_password/',
          auth_views.PasswordResetView.as_view(template_name="accounts/password_reset.html"),

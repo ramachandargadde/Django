@@ -1,6 +1,17 @@
 {%  extends 'accounts/main.html' %}
 {% block content %}
 {%  include 'accounts/status.html' %}
+<style>
+	#checkbox {
+  text-align: center;
+  /* center checkbox horizontally */
+  vertical-align: middle;
+  /* center checkbox vertically */
+}
+#bold{
+font-weight: bold;
+}
+</style>
 
 <div class="row">
 	<div class="col-md">
@@ -11,6 +22,7 @@
 					<th>Note</th>
 					<th>Date Orderd</th>
 					<th>Status</th>
+					<th><a href="{% url 'export-csv'%}"><input type="button" value="Export" style="font-weight:bold";></a> </th>
 				</tr>
 
 				{% for order in orders %}
@@ -20,6 +32,7 @@
 					<td>{{order.note}}</td>
 					<td>{{order.date_created}}</td>
 					<td>{{order.status}}</td>
+					<td><input type="checkbox" name="myTextEditBox" value="checked" id="checkbox"/></td>
 				</tr>
 				{% endfor %}
 

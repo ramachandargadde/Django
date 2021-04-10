@@ -34,6 +34,7 @@ urlpatterns = [
     path('account/', views.accountSettings, name="account"),
     path('export_csv/',views.export_csv,name='export-csv'),
 
+
     path('reset_password/',
          auth_views.PasswordResetView.as_view(template_name="accounts/password_reset.html"),
          name="reset_password"),

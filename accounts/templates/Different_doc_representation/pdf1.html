@@ -1,0 +1,42 @@
+{%  extends 'accounts/main.html' %}
+{% block content %}
+{%  include 'accounts/status.html' %}
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>PDF</title>-->
+<!--    <style>-->
+<!--        @page{-->
+<!--        size :"A4"-->
+<!--        margin:2.5cm,1.5cm,3.5cm;-->
+<!--        @top-cenetr{-->
+<!--        content:"Company Name";-->
+<!--        }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--				{% for order in orders %}-->
+
+<!--				<tr>-->
+<!--					<td>{{order.product}}</td>-->
+<!--					<td>{{order.note}}</td>-->
+<!--					<td>{{order.date_created}}</td>-->
+<!--					<td>{{order.status}}</td>-->
+<!--					<td><input type="checkbox" name="myTextEditBox" value="checked" id="checkbox"/></td>-->
+<!--				</tr>-->
+<!--				{% endfor %}-->
+<!--</body>-->
+<!--</html>-->
+
+
+# def export_pdf(request):
+#     responce=HttpResponse(content_type='application/pdf')
+#     responce['Content-Disposition']='attachment ; filename=Export_Product_details.pdf'
+#     responce['Content-Transfer-Encoding']='binary'
+#     orders = request.user.customer.order_set.all()
+#     return  render(request,'Different_doc_representation/pdf1.html',{'orders':orders})
+
+
+  # path('export_pdf/',views.export_pdf,name='export-pdf'),
+
+<!--					<th><a href="{% url 'export-pdf'%}"><input type="button" value="PDF" style="font-weight:bold";></a> </th>-->

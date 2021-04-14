@@ -29,6 +29,7 @@
 		<h5>LAST 5 ORDERS</h5>
 		<hr>
 		<div class="card card-body">
+			{% csrf_token %}
 			<table class="table table-sm" id="tabl">
 				<tr>
 					<th>Product</th>
@@ -37,15 +38,11 @@
 					<th>ID</th>
 					<th>Update</th>
 					<th>Delete</th>
-					<form>
-						{% csrf_token %}
-						<th><button type="submit" class="btn btn-sm btn-danger" onclick="myfunction()" name="remove1"
-								id="chandu">Remove</button></th>
-					</form>
-				</tr>
+					<th><button type="submit" class="btn btn-sm btn-danger" id="remove">Remove</button></th>
+				</tr>				
 				{%for order in orders%}
 
-				<tr>
+				<tr id="{{order.id}}">
 					<td>{{order.product}}</td>
 					<td>{{order.date_created}}</td>
 					<td>{{order.status}}</td>
@@ -59,8 +56,4 @@
 		</div>
 	</div>
 </div>
-<script src="/static/javascript/dashboard_check.js">
-
-
-</script>
 {%endblock%}

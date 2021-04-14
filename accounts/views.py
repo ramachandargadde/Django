@@ -174,6 +174,11 @@ def deleteOrder(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def remove(request):
     print(request.POST)
+    if request.method=="POST":
+        order_id=request.POST.getlist('selected[]')
+        for pk in order_id:
+            order=Order.objects.get(id=pk)
+            order.delete()
     return redirect('/')
 
 

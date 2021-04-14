@@ -40,3 +40,49 @@ function myFunction() {
 
 </body>
 </html>
+<!--					<th><input id="butn1" type="button" value="displayrecords" onclick="myfunction()"></th>-->
+<!--					<p id="demo">A Paragraph.</p>-->
+	function getvalues(){
+	console.log(1)
+	var selected=new Array();
+	console.log(selected)
+	var selchk = document.querySelectorAll('.pl');
+	 for (var i = 0; i < selchk.length; i++) {
+            selchk[i].checked = true;
+        }
+}
+	console.log(selchk)
+	console.log(selchk.value)
+	for (var i=0;i<selchk.length;i++){
+	if(selchk[i].checked){
+	selected.push(selchk[i].value);
+	}
+	}
+	if(selected.length>0){
+	document.getElementById("demo").innerHTML =selected;
+	}
+	};
+function
+myfunction()
+{
+document.getElementById("demo").innerHTML = "Paragraph changed.";
+};
+name="order_id[]"
+
+	 < th > < button
+type = "submit"
+
+
+class ="btn btn-sm btn-danger"
+
+
+onclick = "myfunction()"
+id = "btn"
+href = "{%url 'remove_order'selected %}" > Remove < / button > < / th >
+
+print(pk)
+order = Order.objects.all()
+context = {'item': order}
+return render(request, 'accounts/delete.html', context)
+
+<a  >Remove</a>

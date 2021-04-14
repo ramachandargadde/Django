@@ -21,18 +21,20 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.home,name='home'),
+    path('', views.home, name='home'),
     path('user/', views.userPage, name="user-page"),
-    path('Customer/<str:pk_test>/', views.customer,name='customer'),
-    path('Product/',views.product,name='product'),
-    path('create_order/<str:pk>/',views.createOrder,name='create_order'),
-    path('update_order/<str:pk>/',views.updateOrder,name='update_order'),
+    path('Customer/<str:pk_test>/', views.customer, name='customer'),
+    path('Product/', views.product, name='product'),
+    path('create_order/<str:pk>/', views.createOrder, name='create_order'),
+    path('update_order/<str:pk>/', views.updateOrder, name='update_order'),
     path('delete_order/<str:pk>/', views.deleteOrder, name='delete_order'),
-    path('login/',views.loginpage,name='login'),
-    path('register/',views.register,name='register'),
+    path('remove/', views.remove, name='remove'),
+    path('login/', views.loginpage, name='login'),
+    path('register/', views.register, name='register'),
     path('logout/', views.logoutUser, name='logout'),
     path('account/', views.accountSettings, name="account"),
-    path('export_csv/',views.export_csv,name='export-csv'),
+    path('export_csv/', views.export_csv, name='export-csv'),
+    path('export_excel/', views.export_excel, name='export-excel'),
 
 
     path('reset_password/',

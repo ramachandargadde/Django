@@ -19,7 +19,9 @@ from django.contrib.auth.models import Group
 import csv,io
 # from weasyprint import HTML
 # import tempfile
-
+import xlwt
+from openpyxl import Workbook,load_workbook
+from django.views.generic import View
 
 
 
@@ -168,6 +170,13 @@ def deleteOrder(request, pk):
 	context = {'item':order}
 	return render(request, 'accounts/delete.html', context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
+def remove(request):
+    print(request.POST)
+    return redirect('/')
+
+
 
 def export_csv(request):
     responce=HttpResponse(content_type='text/csv')
@@ -177,5 +186,30 @@ def export_csv(request):
     orders=request.user.customer.order_set.all()
     for order in orders:
         writer.writerow([order.product,order.note,order.date_created,order.status])
+    return responce
+def export_excel(request):
+    responce=HttpResponse(content_type='application/ms-excel')
+    responce['Content-Disposition'] = 'attachment ; filename=ExportProductdetails.xlsx'
+    wb=Workbook()
+    wb['Sheet'].title = "Export_Product_details"
+    sh1 = wb.active
+    print(sh1)
+
+    orders = request.user.customer.order_set.all()
+    print(orders)
+    i=1
+
+    for order in orders:
+        print(order.product, order.note, order.date_created, order.status)
+        print(order.product)
+        sh1.cell(1, 1).value =str(order.product)
+        print(str(order.product))
+        # sh1.cell(i, 3).value = order.note
+        # sh1.cell(i, 4).value = order.date_created
+        # sh1.cell(i, 5).value = order.status
+        # print(order.product,order.note,order.date_created,order.status)
+        # i=i+1
+
+    wb.save("ExportProductdetails.xlsx")
     return responce
 
